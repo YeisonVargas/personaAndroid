@@ -2,6 +2,7 @@ package com.flisol.persona;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,7 +26,7 @@ public class PersonaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_persona);
 
         RequestQueue cola = Volley.newRequestQueue(getApplicationContext());
-        String url = "http://192.168.10.145:8000/personas/1/";
+        String url = "http://192.168.10.145:8000/personas/17/";
 
         JsonObjectRequest peticion = new JsonObjectRequest(Request.Method.GET,
                 url, null, new Response.Listener<JSONObject>() {
@@ -37,9 +38,9 @@ public class PersonaActivity extends AppCompatActivity {
                     llenarComponentes(String.valueOf(response.get("nombre"))
                     , String.valueOf(response.get("descripcion")),
                             String.valueOf(response.get("foto")),
-                            String.valueOf(response.get("habilidadUno")),
-                            String.valueOf(response.get("habilidadDos")),
-                            String.valueOf(response.get("habilidadTres"))
+                            String.valueOf(response.get("habilidad_uno")),
+                            String.valueOf(response.get("habilidad_dos")),
+                            String.valueOf(response.get("habilidad_tres"))
                             );
 
                 } catch (JSONException e) {
@@ -55,6 +56,8 @@ public class PersonaActivity extends AppCompatActivity {
                         "No hay conexión a Internet", Toast.LENGTH_LONG);
             }
         });
+
+        cola.add(peticion);
     }
 
 
@@ -70,6 +73,6 @@ public class PersonaActivity extends AppCompatActivity {
 
         ((TextView)findViewById(R.id.habilidad_uno)).setText(habilidadUno);
         ((TextView)findViewById(R.id.habilidad_dos)).setText(habilidadDos);
-        ((TextView)findViewById(R.id.habibilidad_tres)).setText(habilidadTres);
+        ((TextView)findViewById(R.id.habilidad_tres)).setText(habilidadTres);
     }
 }

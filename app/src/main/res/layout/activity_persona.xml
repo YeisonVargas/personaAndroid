@@ -48,7 +48,7 @@
 
     </RelativeLayout>
 
-    <android.support.v4.widget.CircleImageView
+    <com.pkmmte.view.CircularImageView
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_centerHorizontal="true"
@@ -78,7 +78,7 @@
             android:layout_margin="5dp"/>
 
         <TextView
-            android:id="@+id/habibilidad_tres"
+            android:id="@+id/habilidad_tres"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hola"
